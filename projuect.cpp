@@ -1,5 +1,6 @@
 #include <iostream>
 #include <tchar.h>
+#include <cstring>
 
 using namespace std;
 
@@ -44,64 +45,77 @@ public:
         matriz[b][a] = distancia;
     }
 
-    void setearValoresNodo(int a, int x, int y){
-        nodos[a].x = x;
-        nodos[a].y = y;
+    void setearNodo(int id, const char nombre[], int x, int y)
+    {
+        nodos[id].id = id;
 
+        strcpy(nodos[id].nombre, nombre);
+
+        nodos[id].x = x;
+        nodos[id].y = y;
     }
 };
 
-int main()
-{
-    Grafo g;
-    
-    // Córdoba ↔ Villa María
-    g.conectar(0, 1, 140);
+    int main()
+    {
+        Grafo g;
 
-    // Córdoba ↔ Carlos Paz
-    g.conectar(0, 3, 35);
+        g.setearNodo(0, "Cordoba", 350, 120);
+        g.setearNodo(1, "Villa Maria", 500, 280);
+        g.setearNodo(2, "Rio Cuarto", 420, 500);
+        g.setearNodo(3, "Carlos Paz", 250, 140);
+        g.setearNodo(4, "San Francisco", 700, 80);
+        g.setearNodo(5, "Bell Ville", 620, 260);
+        g.setearNodo(6, "Alta Gracia", 300, 220);
+        g.setearNodo(7, "Rio Tercero", 420, 320);
 
-    // Córdoba ↔ San Francisco
-    g.conectar(0, 4, 210);
+        // Córdoba ↔ Villa María
+        g.conectar(0, 1, 140);
 
-    // Córdoba ↔ Alta Gracia
-    g.conectar(0, 6, 40);
+        // Córdoba ↔ Carlos Paz
+        g.conectar(0, 3, 35);
 
-    // Córdoba ↔ Río Tercero
-    g.conectar(0, 7, 110);
+        // Córdoba ↔ San Francisco
+        g.conectar(0, 4, 210);
 
-    // Villa María ↔ Río Cuarto
-    g.conectar(1, 2, 220);
+        // Córdoba ↔ Alta Gracia
+        g.conectar(0, 6, 40);
 
-    // Villa María ↔ San Francisco
-    g.conectar(1, 4, 150);
+        // Córdoba ↔ Río Tercero
+        g.conectar(0, 7, 110);
 
-    // Villa María ↔ Bell Ville
-    g.conectar(1, 5, 65);
+        // Villa María ↔ Río Cuarto
+        g.conectar(1, 2, 220);
 
-    // Villa María ↔ Río Tercero
-    g.conectar(1, 7, 100);
+        // Villa María ↔ San Francisco
+        g.conectar(1, 4, 150);
 
-    // Río Cuarto ↔ Carlos Paz
-    g.conectar(2, 3, 190);
+        // Villa María ↔ Bell Ville
+        g.conectar(1, 5, 65);
 
-    // Río Cuarto ↔ Bell Ville
-    g.conectar(2, 5, 180);
+        // Villa María ↔ Río Tercero
+        g.conectar(1, 7, 100);
 
-    // Río Cuarto ↔ Río Tercero
-    g.conectar(2, 7, 140);
+        // Río Cuarto ↔ Carlos Paz
+        g.conectar(2, 3, 190);
 
-    // Carlos Paz ↔ Alta Gracia
-    g.conectar(3, 6, 40);
+        // Río Cuarto ↔ Bell Ville
+        g.conectar(2, 5, 180);
 
-    // San Francisco ↔ Bell Ville
-    g.conectar(4, 5, 170);
+        // Río Cuarto ↔ Río Tercero
+        g.conectar(2, 7, 140);
 
-    // Bell Ville ↔ Río Tercero
-    g.conectar(5, 7, 120);
+        // Carlos Paz ↔ Alta Gracia
+        g.conectar(3, 6, 40);
 
-    // Alta Gracia ↔ Río Tercero
-    g.conectar(6, 7, 90);
+        // San Francisco ↔ Bell Ville
+        g.conectar(4, 5, 170);
 
-    return 0;
-}
+        // Bell Ville ↔ Río Tercero
+        g.conectar(5, 7, 120);
+
+        // Alta Gracia ↔ Río Tercero
+        g.conectar(6, 7, 90);
+
+        return 0;
+    }
